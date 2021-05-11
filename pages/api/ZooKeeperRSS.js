@@ -16,7 +16,7 @@ async function main(req) {
   // });
 
   if (feed.items.length > 0) {
-    result.push(items[0]);
+    result.push(feed.items[0]);
   }
 
   return { success: true, data: result };
