@@ -11,9 +11,13 @@ async function main(req) {
   let feed = await parser.parseURL('https://medium.com/feed/zookeeper-blog');
   console.log(feed.title);
 
-  feed.items.forEach(item => {
-    result.push(item);
-  });
+  // feed.items.forEach(item => {
+  //   result.push(item);
+  // });
+
+  if (feed.items.length > 0) {
+    result.push(items[0]);
+  }
 
   return { success: true, data: result };
 }
