@@ -1,9 +1,21 @@
 import Cors from 'cors'
+let Parser = require('rss-parser');
+let parser = new Parser();
+
 
 async function main(req) {
-  let query = req.query;
+  // let query = req.query;
 
-  return { success: true, data: { addr, block, balance: total.div(1e18).toString(), time: Date.now() } };
+  let result = [];
+
+  let feed = await parser.parseURL('https://medium.com/feed/zookeeper-blog');
+  console.log(feed.title);
+
+  feed.items.forEach(item => {
+    result.push(item);
+  });
+
+  return { success: true, data: result };
 }
 
 // Initializing the cors middleware
